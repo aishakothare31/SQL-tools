@@ -3,21 +3,31 @@ import urllib.request
 import re
 import requests
 import pprint
+from bs4 import BeautifulSoup
+from six.moves import urllib
+import re
+
 url = input('enter url you wish to test')
 # url_visit = urllib.request.urlopen(url)
-
-
+req = urllib.request.Request(url)
+#Response is stored here
+res = urllib.request.urlopen(req)
+resp = res.read()
+soup = BeautifulSoup(resp, "html.parser")
+result=soup.find_all("form")
+#re part to get URL in variable login_url
+headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246',
+            'origin':url,
+            'referer':url+'/cgi-bin/login.pl', #login_url
+            }
+#add fields extracted from form as keys to the payload dist, call injection func to inject malicious code as value into payload dist
 payload = {
-'access': 212321,
+'access': 212321, 
 'password': 'mypasswd',
 'softvulnsec': '016',
 'matnr': 9130300,
 'login': 'Login',
 }
-headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246',
-            'origin':url,
-            'referer':url+'/cgi-bin/login.pl',
-            }
 
 s = requests.session()
 #request = s.get(url)
